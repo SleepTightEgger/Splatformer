@@ -21,4 +21,8 @@ class splatter {
     noStroke();
     ellipse(position.x, position.y, size, size);
   }
+  
+  boolean hit(float x, float y, float w, float h){
+    return position.x > x && position.x < x + w && position.y > y && position.y < y + h;
+  }
 }
