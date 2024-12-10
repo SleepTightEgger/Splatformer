@@ -4,6 +4,8 @@ class player {
   boolean goLeft;
   boolean goRight;
   boolean isInAir;
+  int jumpCount;
+  
   player() {
     position = new PVector(1000, 200);
     velocity = new PVector(0, 1);
@@ -29,6 +31,13 @@ class player {
     isInAir = true;
     velocity.y = -15;
     position.add(velocity);
+    jumpCount += 1;
+    if (jumpCount == 2){
+      int splatters = (int)random(5,10);
+      for (int i = 0; i < splatters; i++){
+        splatter.add(new splatter(position.x, position.y, color(0,0,255)));
+      }
+    }
   }
 
   void gravity() {
@@ -43,6 +52,7 @@ class player {
       if (position.x + width/80 > p.position.x - p.sizeX/2 && position.x - width/80 < p.position.x + p.sizeX/2 && position.y + width/80 <= p.position.y - p.sizeY/2 && position.y + width/80 + velocity.y >= p.position.y - p.sizeY/2){
         position.y = p.position.y - p.sizeY/2 - width/80;
         isInAir = false;
+        jumpCount = 0;
         break;
       } else {
         isInAir = true;

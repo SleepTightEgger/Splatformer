@@ -1,4 +1,5 @@
 ArrayList<platforms> platforms;
+ArrayList<splatter> splatter;
 player player = new player();
 
 void setup() {
@@ -6,6 +7,7 @@ void setup() {
   colorMode(HSB, 255);
 
   platforms = new ArrayList<platforms>();
+  splatter = new ArrayList<splatter>();
   platforms.add(new platforms(width/2, height-height/8, width/4, height/12));
   platforms.add(new platforms(width-width/4, height-height/4, width/4, height/12));
 }
@@ -20,6 +22,12 @@ void draw() {
     platforms p = platforms.get(i);
     p.display();
   }
+  
+  for (int i = splatter.size() - 1; i >=0; i--){
+    splatter s = splatter.get(i);
+    s.display();
+    s.gravity();
+  }
 }
 
 void keyPressed() {
@@ -30,7 +38,9 @@ void keyPressed() {
     player.goRight = true;
   }
   if (key == 'w' || key == ' ') {
-    player.jump();
+    if (player.jumpCount < 2) {
+      player.jump();
+    }
   }
 }
 
