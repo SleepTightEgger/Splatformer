@@ -10,6 +10,7 @@ class player {
     position = new PVector(1000, 200);
     velocity = new PVector(0, 1);
     isInAir = true;
+    jumpCount = 0;
   }
 
   void drawPlayer() {

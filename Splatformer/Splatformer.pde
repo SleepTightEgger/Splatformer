@@ -15,11 +15,13 @@ void setup() {
 
 void draw() {
   background(177, 212, 69);
+  
+  level.display();
 
   player.drawPlayer();
   player.moveCharacter();
   player.gravity();
-  level.display();
+  
 }
 
 void keyPressed() {

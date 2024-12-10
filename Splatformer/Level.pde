@@ -2,6 +2,7 @@ class Level {
   PVector playerStart;
   String text;
   int level;
+  finishBox finish;
 
   Level() {
     level = 1;
@@ -14,12 +15,82 @@ class Level {
   void loadLevel() {
     platforms = new ArrayList<platforms>();
     if (level == 1) {
-      platforms.add(new platforms(width/2, height-height/8, width/4, height/12));
-      platforms.add(new platforms(width-width/4, height-height/4, width/4, height/12));
+      text = "PRESS A/D TO MOVE";
+      platforms.add(new platforms(width/2, height/6, width, height/3));
+      platforms.add(new platforms(width/2, height-height/6, width, height/3));
+      platforms.add(new platforms(width/10.66, height/2, width/5.33, height/3));
+      platforms.add(new platforms(width-width/10.66, height/2, width/5.33, height/3));
+      finish = new finishBox(width-width/4, height-height/2.77);
+      playerStart = new PVector(width/4, height-height/2.25);
     }
+    if (level == 2) {
+      text = "PRESS SPACE TO JUMP";
+      platforms.add(new platforms(width/2, height/6, width, height/3));
+      platforms.add(new platforms(width/2, height-height/6, width, height/3));
+      platforms.add(new platforms(width/10.66, height/2, width/5.33, height/3));
+      platforms.add(new platforms(width-width/10.66, height/2, width/5.33, height/3));
+      
+      platforms.add(new platforms(width/2, height-height/2.7, width/8, height/9));
+      playerStart = new PVector(width/4, height-height/2.25);
+    }
+    if (level == 3) {
+      text = "PRESS SPACE IN THE AIR TO JUMP AGAIN";
+      platforms.add(new platforms(width/2, height/6, width, height/3));
+      platforms.add(new platforms(width/10.66, height/2, width/5.33, height/3));
+      platforms.add(new platforms(width-width/10.66, height/2, width/5.33, height/3));
+      platforms.add(new platforms(width/5.8, height-height/6, width/2.9, height/3));
+      platforms.add(new platforms(width-width/5.8, height-height/6, width/2.9, height/3));
+      playerStart = new PVector(width/4, height-height/2.25);
+    }
+    if (level == 4) {
+      text = "JUMP WHILE ON WALLS TO WALL JUMP";
+      platforms.add(new platforms(width/10.66, height/2, width/5.33, height/2.25));
+      platforms.add(new platforms(width-width/10.66, height/2, width/5.33, height/2.25));
+      platforms.add(new platforms(width/2, height/2, width/8, height/2.25));
+      platforms.add(new platforms(width/2, height-height/6, width, height/3));
+      playerStart = new PVector(width/4, height-height/2.25);
+    }
+    if (level == 5) {
+      text = " ";
+      platforms.add(new platforms(width/32, height-height/3.6, width/16, height/1.8));
+      platforms.add(new platforms(width-width/32, height-height/2.56, width/16, height/1.28));
+      platforms.add(new platforms(width/5.33, height-height/18, width/4, height/9));
+      platforms.add(new platforms(width/2, height-height/12, width/2.66, height/6));
+      platforms.add(new platforms(width-width/5.33, height-height/7.2, width/4, height/3.6));
+
+      platforms.add(new platforms(width/2-width/16, height/2+height/9, width/4, height/9));
+      finish = new finishBox(width/2-width/16, height/2+height/36);
+      playerStart = new PVector(width/8, height-height/4.5);
+    }
+    if (level == 6) {
+      platforms.add(new platforms(width/2, height, width/8, height/4.5));
+      platforms.add(new platforms(width/2, height/3.6, width/16, height/9));
+      platforms.add(new platforms(width/2, height/1.636, width/16, height/9));
+      finish = new finishBox(width/2, height/5.14);
+      playerStart = new PVector(width/2, height-height/4.5);
+    }
+    if (level == 7) {
+      
+    }
+    if (level == 8) {
+      
+    }
+    if (level == 9) {
+      
+    }
+    if (level == 10) {
+      
+    }
+    if (level == 11) {
+      
+    }
+    player.position = new PVector(playerStart.x, playerStart.y);
   }
 
   void display() {
+    textSize(40);
+    textAlign(CENTER);
+    text(text, width/2, height/2);
     for (int i = marks.size() - 1; i >=0; i--) {
       marks m = marks.get(i);
       m.display();
@@ -29,5 +100,7 @@ class Level {
       p.display();
       p.splatter();
     }
+    
+    finish.display();
   }
 }

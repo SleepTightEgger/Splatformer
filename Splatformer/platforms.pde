@@ -10,8 +10,8 @@ class platforms {
   }
 
   void display() {
-    fill(200);
-    rect(position.x, position.y, sizeX, sizeY);
+    //fill(200);
+    //rect(position.x, position.y, sizeX, sizeY);
   }
 
   void splatter() {
@@ -26,7 +26,5 @@ class platforms {
         splatter.remove(i);
       }
     }
-  }
-  
-  
+  }  
 }
