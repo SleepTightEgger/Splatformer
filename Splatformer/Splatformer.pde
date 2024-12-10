@@ -2,16 +2,15 @@ ArrayList<platforms> platforms;
 ArrayList<splatter> splatter;
 ArrayList<marks> marks;
 player player = new player();
+Level level = new Level();
 
 void setup() {
   size(1920, 1080);
   colorMode(HSB, 255);
 
-  platforms = new ArrayList<platforms>();
   splatter = new ArrayList<splatter>();
   marks = new ArrayList<marks>();
-  platforms.add(new platforms(width/2, height-height/8, width/4, height/12));
-  platforms.add(new platforms(width-width/4, height-height/4, width/4, height/12));
+  level.init();
 }
 
 void draw() {
@@ -20,11 +19,7 @@ void draw() {
   player.drawPlayer();
   player.moveCharacter();
   player.gravity();
-  for (int i = platforms.size() - 1; i >= 0; i--) {
-    platforms p = platforms.get(i);
-    p.display();
-    p.splatter();
-  }
+  level.display();
 }
 
 void keyPressed() {

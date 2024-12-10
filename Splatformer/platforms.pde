@@ -10,8 +10,8 @@ class platforms {
   }
 
   void display() {
-    //fill(200);
-    //rect(position.x, position.y, sizeX, sizeY);
+    fill(200);
+    rect(position.x, position.y, sizeX, sizeY);
   }
 
   void splatter() {
@@ -25,11 +25,6 @@ class platforms {
         marks.add(new marks(s.position.x, s.position.y, s.paintColor, s.size));
         splatter.remove(i);
       }
-    }
-    
-    for (int i = marks.size() - 1; i >=0; i--) {
-      marks m = marks.get(i);
-      m.display();
     }
   }
   

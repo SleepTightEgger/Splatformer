@@ -6,8 +6,8 @@ class splatter {
   
   splatter(float x, float y, color c){
     position = new PVector(x, y);
-    velocity = new PVector(random(-5,5), random(-5,5));
-    size = random(10, 20);
+    velocity = new PVector(random(-5,5), random(-5,0));
+    size = random(30, 50);
     paintColor = c;
   }
   
