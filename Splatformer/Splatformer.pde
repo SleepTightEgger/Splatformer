@@ -20,6 +20,9 @@ void keyPressed(){
   if (key == 'd') {
     player.goRight = true;
   }
+  if (key == 'w' || key == ' '){
+    player.jump();
+  }
 }
 
 void keyReleased(){
