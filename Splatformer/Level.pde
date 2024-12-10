@@ -13,7 +13,9 @@ class Level {
   }
 
   void loadLevel() {
+    splatter.clear();
     platforms = new ArrayList<platforms>();
+    player.isInAir = true;
     if (level == 1) {
       text = "PRESS A/D TO MOVE";
       platforms.add(new platforms(width/2, height/6, width, height/3));
@@ -29,7 +31,7 @@ class Level {
       platforms.add(new platforms(width/2, height-height/6, width, height/3));
       platforms.add(new platforms(width/10.66, height/2, width/5.33, height/3));
       platforms.add(new platforms(width-width/10.66, height/2, width/5.33, height/3));
-      
+
       platforms.add(new platforms(width/2, height-height/2.7, width/8, height/9));
       playerStart = new PVector(width/4, height-height/2.25);
     }
@@ -70,19 +72,14 @@ class Level {
       playerStart = new PVector(width/2, height-height/4.5);
     }
     if (level == 7) {
-      
     }
     if (level == 8) {
-      
     }
     if (level == 9) {
-      
     }
     if (level == 10) {
-      
     }
     if (level == 11) {
-      
     }
     player.position = new PVector(playerStart.x, playerStart.y);
   }
@@ -91,16 +88,13 @@ class Level {
     textSize(40);
     textAlign(CENTER);
     text(text, width/2, height/2);
-    for (int i = marks.size() - 1; i >=0; i--) {
-      marks m = marks.get(i);
+    for (marks m : marks) {
       m.display();
     }
-    for (int i = platforms.size() - 1; i >= 0; i--) {
-      platforms p = platforms.get(i);
+    for (platforms p : platforms) {
       p.display();
       p.splatter();
     }
-    
     finish.display();
   }
 }

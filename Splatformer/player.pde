@@ -5,6 +5,7 @@ class player {
   boolean goRight;
   boolean isInAir;
   int jumpCount;
+  int lives = 5;
 
   player() {
     position = new PVector(1000, 200);
@@ -32,7 +33,7 @@ class player {
 
   void drawMarks() {
     if (!isInAir) {
-      marks.add(new marks(position.x, position.y + width/80, color(frameCount%255, 255, 255), random (30,50)));
+      marks.add(new marks(position.x, position.y + width/80, color(frameCount%255, 255, 255), random (30, 50)));
     }
   }
 
@@ -42,7 +43,7 @@ class player {
     position.add(velocity);
     jumpCount += 1;
     if (jumpCount == 2) {
-      int splatters = (int)random(5, 10);
+      int splatters = (int)random(15, 20);
       for (int i = 0; i < splatters; i++) {
         splatter.add(new splatter(position.x, position.y, color(frameCount%255, 255, 255)));
       }
@@ -56,8 +57,7 @@ class player {
     } else {
       velocity.y = 0;
     }
-    for (int i = platforms.size() - 1; i >= 0; i--) {
-      platforms p = platforms.get(i);
+    for (platforms p : platforms) {
       if (position.x + width/80 > p.position.x - p.sizeX/2 && position.x - width/80 < p.position.x + p.sizeX/2 && position.y + width/80 <= p.position.y - p.sizeY/2 && position.y + width/80 + velocity.y >= p.position.y - p.sizeY/2) {
         position.y = p.position.y - p.sizeY/2 - width/80;
         isInAir = false;

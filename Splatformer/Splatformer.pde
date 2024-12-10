@@ -22,6 +22,19 @@ void draw() {
   player.moveCharacter();
   player.gravity();
   
+  if (player.position.y > height){
+    player.lives--;
+    if (player.lives == 0){
+      platforms.clear();
+      marks.clear();
+      player.lives = 5;
+      level.level = 1;
+      level.loadLevel();
+    } else {
+      player.position = new PVector(level.playerStart.x, level.playerStart.y);
+    }
+  }
+  
 }
 
 void keyPressed() {

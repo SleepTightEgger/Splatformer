@@ -12,7 +12,7 @@ class splatter {
   }
   
   void gravity() {
-    velocity.y += 0.1;
+    velocity.y += 0.05;
     position.add(velocity);
   }
   
