@@ -38,6 +38,7 @@ class player {
     } else {
       velocity.y = 0;
     }
+    //if (position.y + width/80 >= height) {
     if (position.y + width/80 >= height) {
       isInAir = false;
       position.y = height - width/80;
