@@ -5,7 +5,7 @@ class player {
   boolean goRight;
   boolean isInAir;
   player() {
-    position = new PVector(200, 200);
+    position = new PVector(1000, 200);
     velocity = new PVector(0, 1);
     isInAir = true;
   }
@@ -38,10 +38,15 @@ class player {
     } else {
       velocity.y = 0;
     }
-    //if (position.y + width/80 >= height) {
-    if (position.y + width/80 >= height) {
-      isInAir = false;
-      position.y = height - width/80;
-    }
+    for (int i = platforms.size() - 1; i >= 0; i--){
+      platforms p = platforms.get(i);
+      if (position.x + width/80 > p.position.x - p.sizeX/2 && position.x - width/80 < p.position.x + p.sizeX/2 && position.y + width/80 <= p.position.y - p.sizeY/2 && position.y + width/80 + velocity.y >= p.position.y - p.sizeY/2){
+        position.y = p.position.y - p.sizeY/2 - width/80;
+        isInAir = false;
+        break;
+      } else {
+        isInAir = true;
+      }
+    }    
   }
 }
