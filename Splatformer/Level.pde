@@ -72,22 +72,13 @@ class Level {
       playerStart = new PVector(width/2, height-height/4.5);
     }
     if (level == 7) {
-    }
-    if (level == 8) {
-    }
-    if (level == 9) {
-    }
-    if (level == 10) {
-    }
-    if (level == 11) {
+      platforms.add(new platforms(width/2, height, width/8, height/4.5));
+      gameWon = true;
     }
     player.position = new PVector(playerStart.x, playerStart.y);
   }
 
   void display() {
-    textSize(40);
-    textAlign(CENTER);
-    text(text, width/2, height/2);
     for (marks m : marks) {
       m.display();
     }
